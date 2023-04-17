@@ -3,7 +3,6 @@
 import * as firebase from "firebase"
 import "firebase/firestore"
 import "firebase/storage"
-
 const firebaseConfig = {
     apiKey: "AIzaSyA4yt9f0w6tbsxMIlhJusTq6thjXQnLSik",
     authDomain: "wapos-20818.firebaseapp.com",
@@ -21,7 +20,6 @@ if (firebase.apps.length === 0) {
 } else {
     app = firebase.app()
 }
-
 const auth = firebase.auth();
 const firebaseapp = firebase.app();
 const db = firebase.firestore();

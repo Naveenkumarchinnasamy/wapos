@@ -7,7 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-export default class chatlist extends React.Component {
+export default class Chatlist extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

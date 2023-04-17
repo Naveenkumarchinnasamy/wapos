@@ -84,6 +84,9 @@ import deliver from './../component/deliver';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import matches from '../component/Searchfrom/matches';
+import Chatpage from '../component/chatapp.js';
+import Buyerchat from '../component/buyerchatlist';
+import Sellerchat from '../component/sellerchatlist';
 
 const Route = createStackNavigator({
 
@@ -182,6 +185,18 @@ const Route = createStackNavigator({
         navigationOptions: {
             header: null,
         },
+    },
+    Buyerchat:{
+        screen:Buyerchat,
+        navigationOptions:{
+            header:null
+        }
+    },
+    Sellerchat:{
+        screen:Sellerchat,
+        navigationOptions:{
+            header:null
+        }
     },
     shopnowimg: {
         screen: shopnowimg,
@@ -372,6 +387,12 @@ const Route = createStackNavigator({
     },
     Chatlist: {
         screen: Chatlist,
+        navigationOptions: {
+            header: null,
+        },
+    },
+    Chatpage:{
+        screen:Chatpage,
         navigationOptions: {
             header: null,
         },

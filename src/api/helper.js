@@ -267,7 +267,7 @@ export const getOpenDeals = async () => {
 export const getFlightDetails = async () => {
 
     const TOKEN = await AsyncStorage.getItem('currentUserFirebaseToken');
-
+console.log(TOKEN,"TOKENSSSS")
     const response = await fetch(`${Base_URL}get_all_trips/`, {
         method: 'GET',
         headers: {
@@ -339,13 +339,65 @@ export const getOpenDealSingle = async (ITEM_ID) => {
 export const getMatches = async (id) => {
 
     const TOKEN = await AsyncStorage.getItem('currentUserFirebaseToken');
-
+    const USER_ID = await AsyncStorage.getItem('currentUserFirebaseID');
+console.log(TOKEN,"usererrer")
     const response = await fetch(`${Base_URL}get_data/?ids=${id}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
             Authorization: `JWT ${TOKEN}`,
         }
+    })
+
+    return response;
+};
+export const getSellerChat = async () => {
+
+    const TOKEN = await AsyncStorage.getItem('currentUserFirebaseToken');
+
+    const response = await fetch(`${Base_URL}get_seller_chat_header/`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `JWT ${TOKEN}`,
+        }
+    })
+
+    return response;
+};
+export const getBuyerChat = async () => {
+
+    const TOKEN = await AsyncStorage.getItem('currentUserFirebaseToken');
+    const response = await fetch(`${Base_URL}get_buyer_chat_header/`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `JWT ${TOKEN}`,
+        }
+    })
+
+    return response;
+};
+export const postChatHeader = async (deal_id,trip_id,buyer_id,seller_id,match_id,buyer_price,uid) => {
+const data = new FormData();
+data.append('deal_details_id',deal_id);
+data.append('trip_id',trip_id);
+data.append('buyer_id',buyer_id);
+data.append('seller_id',seller_id);
+data.append('match_id',match_id);
+data.append('buyer_price',buyer_price);
+data.append('seller_price',"0.00");
+data.append('final_price',"0.00");
+data.append('firebase_chat_id',uid);
+    const TOKEN = await AsyncStorage.getItem('currentUserFirebaseToken');
+    const response = await fetch(`${Base_URL}add_chat_header/`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-type': 'multipart/form-data',
+            'Authorization': `JWT ${TOKEN}`
+        },
+        body: data,
     })
 
     return response;

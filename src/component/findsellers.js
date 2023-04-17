@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, KeyboardAvoidingView, Dimensions, Toucha
 const { width: WIDTH } = Dimensions.get('window')
 import { ScrollView } from 'react-native-gesture-handler';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { getMatches } from '../api/helper';
+import { getMatches, postChatHeader } from '../api/helper';
 import moment from 'moment';
 import GradientButton from '../utils/GradientButton';
 import { Base_URL_IMAGE } from '../api/constants';
@@ -39,6 +39,9 @@ export default class findsellers extends React.Component {
         console.log(id,"editidddddddd")
         getMatches(id).then((response) => response.json())
         .then((responseJson) => {
+            // console.log(responseJson.data[0],"maindet")
+            // console.log(responseJson.data[0].deal_details,"deal")
+            // console.log(responseJson.data[0].matched_with,"deal")
             this.setState({chat:responseJson.data});
         })
         .catch((error) => {
@@ -46,8 +49,30 @@ export default class findsellers extends React.Component {
         });
     }
     }
-
-    renderChat = ({ item }) => {
+ChatNow(id){
+   const deal_id=this.state.chat[id].deal_details.id;
+   const trip_id=this.state.chat[id].trip.id;
+   const buyer_id=this.state.chat[id].created_by.id;
+   const seller_id=this.state.chat[id].matched_with.id;
+   const match_id=this.state.chat[id].id;
+   const buyer_price=this.state.chat[id].deal_details.seller_fee;
+   const uid=this.state.chat[id].matched_with.firebase_user_uid;
+    postChatHeader(deal_id,trip_id,buyer_id,seller_id,match_id,buyer_price,uid).then((response) => response.json())
+    .then((responseJson) => {
+        console.log(responseJson,":asapfhihvuvaev")
+            this.props.navigation.navigate('Chatpage',{match_id:uid,create_id:this.state.chat[id].created_by.firebase_user_uid,
+                match_image:this.state.chat[id].matched_with.profile_picture,
+                match_name:this.state.chat[id].matched_with.first_name+this.state.chat[id].matched_with.last_name,
+                create_image:this.state.chat[id].created_by.profile_picture,
+                create_name:this.state.chat[id].created_by.first_name+this.state.chat[id].created_by.last_name
+            });
+        // this.setState({chat:responseJson.data});
+    })
+    .catch((error) => {
+        console.log(error)
+    });
+}
+    renderChat = ({ item,index }) => {
         return (
             <View style={styles.col}>
                 <View style={{ width: '30%' }}>
@@ -73,7 +98,7 @@ export default class findsellers extends React.Component {
                     </View>
                     <View>
                         <GradientButton
-                            onPress={() => this.props.navigation.navigate('Chat')}
+                            onPress={() => this.ChatNow(index)}
                             text={"Chat now"}
                             color1={'#44c7f3'}
                             color2={'#2a78bc'}

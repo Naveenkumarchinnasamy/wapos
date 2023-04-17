@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "104205684075",
+    "project_id": "wapos-20818",
+    "storage_bucket": "wapos-20818.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104205684075:android:64a014d99c79bf0633102e",
+        "android_client_info": {
+          "package_name": "com.wapos.wapos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104205684075-ptb4ftsu20sk0b98m91dis7odvfaucc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoFfAuscACItSSyAZmGzoARlS0R1tMerc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104205684075-ptb4ftsu20sk0b98m91dis7odvfaucc6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

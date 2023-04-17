@@ -60,15 +60,30 @@ componentDidMount = async()=>{
 
         <ScrollView style={{ marginTop: 0 }}>
 
-          <View style={{ borderBottomColor: '#e1e1e1', borderBottomWidth: 1 }}>
-            <TouchableOpacity onPress={() => { this.props.navigation.navigate('mychat') }} style={{ padding: 5, marginLeft: 5, marginVertical: height(2), }}>
+          {/* <View style={{ borderBottomColor: '#e1e1e1', borderBottomWidth: 1 }}>
+            <TouchableOpacity onPress={() => { this.props.navigation.navigate('Chatpage') }} style={{ padding: 5, marginLeft: 5, marginVertical: height(2), }}>
               <View style={{ marginLeft: 15, marginTop: 1, flexDirection: 'row' }}>
                 <Image style={{ width: 25, height: 25, marginRight: 10 }} source={require('../image/icon/s1.png')} />
                 <Text style={{ color: '#44c7f3', fontSize: 18 }}>Active chats</Text>
               </View>
             </TouchableOpacity>
+          </View> */}
+          <View style={{ borderBottomColor: '#e1e1e1', borderBottomWidth: 1 }}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Buyerchat') } style={{ padding: 5, marginLeft: 5, marginVertical: height(2), }}>
+              <View style={{ marginLeft: 15, marginTop: 1, flexDirection: 'row' }}>
+                <Image style={{ width: 25, height: 25, marginRight: 10 }} source={require('../image/icon/s1.png')} />
+                <Text style={{ color: '#44c7f3', fontSize: 18 }}>Buyer chats</Text>
+              </View>
+            </TouchableOpacity>
           </View>
-
+          <View style={{ borderBottomColor: '#e1e1e1', borderBottomWidth: 1 }}>
+            <TouchableOpacity onPress={() => { this.props.navigation.navigate('Sellerchat') }} style={{ padding: 5, marginLeft: 5, marginVertical: height(2), }}>
+              <View style={{ marginLeft: 15, marginTop: 1, flexDirection: 'row' }}>
+                <Image style={{ width: 25, height: 25, marginRight: 10 }} source={require('../image/icon/s1.png')} />
+                <Text style={{ color: '#44c7f3', fontSize: 18 }}>Seller chats</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
           <View style={{ borderBottomColor: '#e1e1e1', borderBottomWidth: 1, }}>
             <TouchableOpacity onPress={() => { this.props.navigation.navigate('notification') }} style={{ padding: 5, marginLeft: 5, marginVertical: height(2), }}>
               <View style={{ marginLeft: 15, marginTop: 1, flexDirection: 'row' }}>
